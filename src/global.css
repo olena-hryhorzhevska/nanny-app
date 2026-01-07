@@ -1,0 +1,32 @@
+:root {
+  --font-family: "Helvetica Neue", sans-serif;
+  --color-primary: #f03f3b;
+  --color-primary-soft: rgba(240, 63, 59, 0.2);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background: #fff;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 32px;
+}
+
+.page-inner {
+  width: 100%;
+  max-width: 1440px;
+}
+
+.section-inner {
+padding: 30px 96px;
+}

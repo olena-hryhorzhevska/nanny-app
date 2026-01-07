@@ -1,0 +1,116 @@
+/* Общий hero-блок */
+.hero-card {
+  display: flex;
+  border-radius: 30px;
+  overflow: hidden;
+  min-height: calc(100vh - 64px);
+}
+
+/* ========== ЛЕВАЯ ПОЛОВИНА ========== */
+
+.hero-left {
+  flex: 1;
+  background: var(--color-primary);
+  color: #fbfbfb;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Лого сверху */
+.hero-left-header {
+  margin-bottom: 32px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Блок с заголовком и кнопкой — по центру между верхом и низом */
+.hero-left-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Заголовок */
+.hero-left-content h1 {
+  margin: 0 0 16px;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Подзаголовок */
+.hero-left-content p {
+  margin: 0 0 32px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* Кнопка Get started */
+.hero-btn {
+  align-self: flex-start;
+  background: transparent;
+  border-radius: 999px;
+  border: 1px solid #ffffff80;
+  padding: 14px 28px;
+  color: #fbfbfb;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* ========== ПРАВАЯ ПОЛОВИНА ========== */
+
+.hero-right {
+  flex: 1;
+  position: relative;
+  padding: 24px 40px;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  background-image: url("/your-image.jpg"); /* поменяешь на свой путь */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Шапка справа сверху */
+.hero-right-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Навигация */
+.hero-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.hero-nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* Кнопки Log in / Registration */
+.nav-btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid #ffffff55;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nav-btn-primary {
+  background: #ffffff;
+  color: var(--color-primary);
+  border-color: transparent;
+}
+
+/* Контент справа (картинка/карточка внизу) */
+.hero-right-body {
+  flex: 1;
+  display: flex;
+  align-items: flex-end; /* чтобы белая карточка сидела внизу */
+}
