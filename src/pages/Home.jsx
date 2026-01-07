@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <PageLayout>
       <section className="hero-card">
-        {/* Левая колонка */}
         <div className="hero-left section-inner">
           <header className="hero-left-header">
             <div className="logo">Nanny.Services</div>
@@ -19,7 +18,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Правая колонка */}
         <div className="hero-right section-inner">
           <header className="hero-right-header">
             <nav className="hero-nav">
@@ -31,7 +29,6 @@ export default function Home() {
           </header>
 
           <div className="hero-right-body">
-            {/* тут будет картинка + белая карточка */}
           </div>
         </div>
       </section>
