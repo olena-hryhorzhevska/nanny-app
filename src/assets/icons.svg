@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-check" viewBox="0 0 30 30">
+    <path
+      d="M7.5 12.5 5 15l7.5 7.5L25 10l-2.5-2.5-10 10z"
+      fill="#fbfbfb"
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+    />
+  </symbol>
+</svg>
