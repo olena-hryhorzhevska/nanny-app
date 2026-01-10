@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import "./LoginModal.css";
+import styles from "./LoginModal.module.css";
 
 const loginSchema = yup.object({
   email: yup
@@ -54,44 +54,51 @@ export default function LoginModal({ isOpen, onClose, onSubmit }) {
   };
 
   return (
-    <div className="backdrop" onClick={handleClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={handleClose}>
+    <div className={styles.backdrop} onClick={handleClose}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        <button className={styles.modalClose} onClick={handleClose}>
           ×
         </button>
 
-        <div className="modal-info">
-          <h2 className="modal-title">Log In</h2>
-          <p className="modal-paragraph">
-            Welcome back! Please enter your credentials to access your account and
-            continue your babysitter search.
+        <div className={styles.modalInfo}>
+          <h2 className={styles.modalTitle}>Log In</h2>
+          <p className={styles.modalParagraph}>
+            Welcome back! Please enter your credentials to access your account
+            and continue your babysitter search.
           </p>
         </div>
 
-        <form className="modal-form" onSubmit={handleSubmit(submitHandler)}>
-          <input
-            placeholder="Email"
-              className="modal-input"
+        <form
+          className={styles.modalForm}
+          onSubmit={handleSubmit(submitHandler)}
+        >
+          <div className={styles.fields}>
+            <input
+              placeholder="Email"
+              className={styles.modalInput}
               type="email"
               {...register("email")}
             />
             {errors.email && (
-              <span className="field-error">{errors.email.message}</span>
-          )}
-          
-          <input
-            placeholder="Password"
-              className="modal-input"
+              <span className={styles.fieldError}>{errors.email.message}</span>
+            )}
+
+            <input
+              placeholder="Password"
+              className={styles.modalInput}
               type="password"
               {...register("password")}
             />
             {errors.password && (
-              <span className="field-error">{errors.password.message}</span>
+              <span className={styles.fieldError}>
+                {errors.password.message}
+              </span>
             )}
+          </div>
 
           <button
             type="submit"
-            className="modal-submit"
+            className={styles.modalSubmit}
             disabled={isSubmitting}
           >
             Log In
