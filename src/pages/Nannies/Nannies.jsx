@@ -1,22 +1,15 @@
 import AppHeader from "../../components/AppHeader/AppHeader";
-import { useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import { useState } from "react";
 import LoginModal from "../../components/LoginModal/LoginModal.jsx";
 import RegistrationModal from "../../components/RegistrationModal/RegistrationModal.jsx";
+import { useAuthUser } from "../../hooks/useAuthUser.js";
 
 export default function Nannies() {
-  const [user, setUser] = useState(null);
+  const { user, loading } = useAuthUser();
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-    return unsubscribe;
-  }, []);
+  if (loading) return null;
 
   return (
     <div>
