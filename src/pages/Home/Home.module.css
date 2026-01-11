@@ -51,6 +51,7 @@
 }
 
 .hero-btn {
+  text-decoration: none;
   align-self: flex-start;
   background: transparent;
   border: 1px solid rgba(251, 251, 251, 0.4);
@@ -64,6 +65,11 @@
   color: #fbfbfb;
   cursor: pointer;
 }
+
+.hero-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 
 .hero-right {
   flex: 1;
@@ -126,11 +132,20 @@
   cursor: pointer;
 }
 
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 .nav-btn-primary {
   background: var(--color-primary);
   border-color: transparent;
   width: 168px;
   height: 48px;
+}
+
+.nav-btn-primary:hover {
+  background-color: #fbfbfb;
+  color: var(--color-primary);
 }
 
 .hero-right-body {

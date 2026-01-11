@@ -40,3 +40,9 @@ body {
 .section-inner {
   padding: 30px 96px;
 }
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 128px;
+}

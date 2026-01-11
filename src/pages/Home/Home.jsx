@@ -15,18 +15,6 @@ export default function Home() {
   const openRegister = () => setIsRegisterOpen(true);
   const closeRegister = () => setIsRegisterOpen(false);
 
-  const handleLoginSubmit = (data) => {
-    console.log("Login form data:", data);
-    // сюда позже добавим firebase login
-    // closeLogin();
-  };
-
-  const handleRegisterSubmit = (data) => {
-    console.log("Registration form data:", data);
-    // сюда позже добавим firebase registration
-    // closeRegister();
-  };
-
   return (
     <PageLayout>
       <section className={styles["hero-card"]}>
@@ -38,7 +26,7 @@ export default function Home() {
           <div className={styles["hero-left-body"]}>
             <h1>Make Life Easier for the Family:</h1>
             <p>Find Babysitters Online for All Occasions</p>
-            <button className={styles["hero-btn"]}>Get started →</button>
+            <Link to="/nannies" className={styles["hero-btn"]}>Get started →</Link>
           </div>
         </div>
 
@@ -82,17 +70,9 @@ export default function Home() {
         </div>
       </section>
 
-      <LoginModal
-        isOpen={isLoginOpen}
-        onClose={closeLogin}
-        onSubmit={handleLoginSubmit}
-      />
+      <LoginModal isOpen={isLoginOpen} onClose={closeLogin} />
 
-      <RegistrationModal
-        isOpen={isRegisterOpen}
-        onClose={closeRegister}
-        onSubmit={handleRegisterSubmit}
-      />
+      <RegistrationModal isOpen={isRegisterOpen} onClose={closeRegister} />
     </PageLayout>
   );
 }

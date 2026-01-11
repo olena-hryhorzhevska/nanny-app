@@ -1,0 +1,133 @@
+.container {
+  background-color: var(--color-primary);
+}
+
+.inner {
+  padding: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  text-decoration: none;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: #fbfbfb;
+}
+
+.nav {
+  display: flex;
+  gap: 40px;
+  position: relative;
+}
+
+.link {
+  text-decoration: none;
+  position: relative;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+}
+
+.link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.white-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #fbfbfb;
+  border-radius: 8px;
+  margin-right: 14px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.userName {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 111%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+  margin-right: 24px;
+}
+
+.navBtn {
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  background: transparent;
+  border-radius: 30px;
+  width: 124px;
+  height: 48px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+  cursor: pointer;
+}
+
+.navBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.whiteBtn {
+  background: #fbfbfb;
+  color: var(--color-primary);
+  width: 168px;
+  height: 48px;
+  border-color: transparent;
+}
+
+.whiteBtn:hover {
+  background: transparent;
+  color: #fbfbfb;
+  border: 1px solid rgba(251, 251, 251, 0.4);
+}
+
+.btns {
+  display: flex;
+  gap: 16px;
+}
+
+.logoutBtn {
+  background: transparent;
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  border-radius: 30px;
+  width: 134px;
+  height: 48px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+}

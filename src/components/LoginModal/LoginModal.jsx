@@ -4,6 +4,10 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./LoginModal.module.css";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const loginSchema = yup.object({
   email: yup
@@ -16,7 +20,9 @@ const loginSchema = yup.object({
     .required("Password is required"),
 });
 
-export default function LoginModal({ isOpen, onClose, onSubmit }) {
+export default function LoginModal({ isOpen, onClose }) {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -44,13 +50,21 @@ export default function LoginModal({ isOpen, onClose, onSubmit }) {
 
   if (!isOpen) return null;
 
-  const submitHandler = (values) => {
-    onSubmit?.(values);
-  };
+    const handleClose = () => {
+      onClose();
+      reset();
+    };
 
-  const handleClose = () => {
-    onClose();
-    reset();
+  const submitHandler = async (values) => {
+    try {
+      const { email, password } = values;
+      await signInWithEmailAndPassword(auth, email, password);
+      toast.success("Login successful 🎉");
+      handleClose();
+      navigate('/nannies')
+    } catch {
+      toast.error("Login failed. Check your email or password");
+    }
   };
 
   return (

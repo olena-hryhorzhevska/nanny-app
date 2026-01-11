@@ -3,6 +3,11 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./RegistrationModal.module.css";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { ref, set, serverTimestamp } from "firebase/database";
+import { auth, db } from "../../firebase/firebase";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const registrationSchema = yup.object({
   name: yup
@@ -18,7 +23,9 @@ const registrationSchema = yup.object({
     .min(6, "Minimum 6 characters")
     .required("Password is required"),
 });
-export default function RegistrationModal({ isOpen, onClose, onSubmit }) {
+export default function RegistrationModal({ isOpen, onClose }) {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -52,8 +59,37 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }) {
     reset();
   };
 
-  const submitHandler = (values) => {
-    onSubmit?.(values);
+  const submitHandler = async (values) => {
+    try {
+      const { name, email, password } = values;
+
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await updateProfile(userCredential.user, { displayName: name });
+
+      const uid = userCredential.user.uid;
+
+      await set(ref(db, `users/${uid}`), {
+        name,
+        email,
+        createdAt: serverTimestamp(),
+      });
+
+      toast.success("Registration successful 🎉");
+      handleClose();
+      navigate("/nannies");
+    } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("This email is already registered");
+        return;
+      }
+
+      toast.error("Registration failed. Please check your data");
+    }
   };
 
   return (
