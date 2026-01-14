@@ -13,4 +13,44 @@
       d="M12 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"
     />
   </symbol>
+  <symbol
+  id="icon-location-pin"
+  viewBox="0 0 16 16"
+  fill="none"
+>
+    <g
+    stroke="#11101c"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.5"
+    clip-path="url(#icon-location-pin-clip)"
+  >
+      <path d="M14 6.667c0 4.666-6 8.666-6 8.666s-6-4-6-8.666a6 6 0 1 1 12 0"/>
+      <path d="M8 8.667a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+    </g>
+    <defs>
+      <clipPath id="icon-location-pin-clip">
+        <rect width="16" height="16" fill="#fff" />
+      </clipPath>
+    </defs>
+  </symbol>
+  <symbol
+  id="icon-rating-star"
+  viewBox="0 0 16 16"
+  fill="none"
+>
+    <g clip-path="url(#icon-rating-star-clip)">
+      <path
+      fill="#ffc531"
+      stroke="#ffc531"
+      stroke-width="1.2"
+      d="M9.8 4.697c.159.302.449.512.785.57l3.8.657-2.688 2.767a1.1 1.1 0 0 0-.3.923l.55 3.818-3.462-1.702-.117-.05a1.1 1.1 0 0 0-.736 0l-.117.05-3.462 1.702.55-3.818a1.1 1.1 0 0 0-.3-.923L1.614 5.924l3.801-.656a1.1 1.1 0 0 0 .785-.57L8 1.285z"
+    />
+    </g>
+    <defs>
+      <clipPath id="icon-rating-star-clip">
+        <rect width="16" height="16" fill="#fff" />
+      </clipPath>
+    </defs>
+  </symbol>
 </svg>
