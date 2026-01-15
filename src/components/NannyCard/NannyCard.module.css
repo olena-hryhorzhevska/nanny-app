@@ -2,12 +2,15 @@
   display: flex;
   align-items: flex-start;
   gap: 24px;
-  background: #fff;
-  border: 1px solid #e8e8e8;
+  background: #fbfbfb;
   border-radius: 24px;
   padding: 24px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
   position: relative;
+}
+
+.nanniesPage {
+  background: #f3f3f3;
 }
 
 .avatarWrapper {
@@ -136,11 +139,8 @@
   list-style: none;
   margin: 0;
   padding: 0;
-
   display: flex;
   align-items: center;
-  gap: 14px;
-
   font-size: 14px;
   font-weight: 600;
   color: #2a2a2a;
@@ -151,12 +151,17 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #11101c;
 }
 
 .metaItem:not(:last-child)::after {
   content: "|";
-  margin-left: 14px;
-  color: #d6d6d6;
+  margin: 0 16px;
+  color: rgba(17, 16, 28, 0.2);
   font-weight: 400;
 }
 
@@ -166,7 +171,7 @@
   width: 16px;
 }
 
-.starIcon {
+.iconStar {
   width: 16px;
   height: 16px;
   flex: 0 0 16px;
@@ -174,8 +179,7 @@
 }
 
 .price {
-  margin-left: 6px;
-  color: #2dbd5a;
+  color: #38cd3e;
   font-weight: 800;
 }
 
@@ -185,11 +189,9 @@
   padding: 6px;
   cursor: pointer;
   line-height: 0;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   color: #111;
 }
 
@@ -219,22 +221,22 @@
 }
 
 .details {
-  margin-top: 18px;
+  margin-top: 34px;
 }
 
 .reviews {
   list-style: none;
   margin: 0;
   padding: 0;
-
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 25px;
 }
 
 .reviewItem {
   display: flex;
-  gap: 14px;
+  flex-wrap: wrap;
+  gap: 12px;
   align-items: flex-start;
 }
 
@@ -242,41 +244,45 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #f7d6d6;
-  color: #e04b47;
-
+  background: rgba(240, 63, 59, 0.2);
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  color: #f03f3b;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  font-weight: 700;
-  flex: 0 0 44px;
 }
 
 .reviewBody {
+  flex: 1;
   min-width: 0;
 }
 
-.reviewTop {
+.reviewHeader {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .reviewerName {
   margin: 0;
+  font-family: var(--font-family);
+  font-weight: 500;
   font-size: 16px;
-  font-weight: 700;
+  line-height: 125%;
   color: #11101c;
 }
 
 .reviewRating {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-
+  gap: 8px;
+  font-family: var(--font-family);
+  font-weight: 500;
   font-size: 14px;
-  font-weight: 700;
+  line-height: 129%;
   color: #11101c;
 }
 
@@ -287,27 +293,37 @@
 }
 
 .reviewText {
-  margin: 8px 0 0;
-  color: #7d7d7d;
-  font-size: 14px;
-  line-height: 1.45;
+  width: 100%;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: rgba(17, 16, 28, 0.5);
+  margin-top: 4px;
 }
 
 .appointmentBtn {
-  margin-top: 18px;
-  padding: 14px 28px;
+  margin-top: 48px;
   border: 0;
-  border-radius: 28px;
   cursor: pointer;
-
   background: #f03f3b;
-  color: #fff;
   font-size: 16px;
   font-weight: 700;
+  border-radius: 30px;
+  width: 215px;
+  height: 48px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
 }
 
 .appointmentBtn:hover {
-  opacity: 0.92;
+  background-color: #fbfbfb;
+  color: #f03f3b;
+  border: 1px solid #f03f3b;
 }
 
 .appointmentBtn:active {

@@ -1,0 +1,17 @@
+.nanniesPage {
+  background: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 128px;
+}
+
+.filtersRow {
+  margin-bottom: 32px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
