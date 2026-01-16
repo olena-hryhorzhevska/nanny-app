@@ -15,3 +15,29 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.loadMoreBtn {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  border: 0;
+  width: 159px;
+  height: 48px;
+  border-radius: 30px;
+  cursor: pointer;
+  background: #f03f3b;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+}
+
+.loadMoreBtn:hover {
+  opacity: 0.92;
+}
+
+.loadMoreBtn:active {
+  transform: scale(0.99);
+}

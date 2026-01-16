@@ -186,13 +186,13 @@
 .favoriteBtn {
   border: 0;
   background: transparent;
-  padding: 6px;
   cursor: pointer;
   line-height: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #111;
+  color: #11101c;
+  margin-left: 34px;
 }
 
 .favoriteBtn .icon {
@@ -290,6 +290,11 @@
   width: 16px;
   height: 16px;
   flex: 0 0 16px;
+}
+
+.heartIcon {
+  width: 26px;
+  height: 26px;
 }
 
 .reviewText {

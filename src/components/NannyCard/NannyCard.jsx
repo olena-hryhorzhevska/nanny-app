@@ -1,10 +1,13 @@
 import styles from "./NannyCard.module.css";
 import { useState } from "react";
+import AppointmentModal from "../AppointmentModal/AppointmentModal.jsx";
 
 export default function NannyCard({ nanny }) {
   const [isReadMore, setIsReadMore] = useState(false);
+  const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
 
   return (
+    <>
       <article className={styles.card}>
         <div className={styles.avatarWrapper}>
           <div className={styles.avatarInner}>
@@ -70,7 +73,11 @@ export default function NannyCard({ nanny }) {
                   </li>
                 ))}
               </ul>
-              <button type="button" className={styles.appointmentBtn}>
+              <button
+                type="button"
+                className={styles.appointmentBtn}
+                onClick={() => setIsAppointmentOpen(true)}
+              >
                 Make an appointment
               </button>
             </div>
@@ -100,12 +107,18 @@ export default function NannyCard({ nanny }) {
             className={styles.favoriteBtn}
             aria-label="Add to favorites"
           >
-            <svg className={styles.icon}>
+            <svg className={styles.heartIcon}>
               <use href="/src/assets/icons.svg#icon-fav-star" />
             </svg>
           </button>
         </div>
       </article>
+      <AppointmentModal
+        isOpen={isAppointmentOpen}
+        onClose={() => setIsAppointmentOpen(false)}
+        nanny={nanny}
+      />
+    </>
   );
 }
 

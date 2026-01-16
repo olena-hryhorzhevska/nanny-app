@@ -17,6 +17,8 @@ import NannyCard from "../../components/NannyCard/NannyCard.jsx";
 import styles from "./Nannies.module.css";
 import FiltersDropdown from "../../components/FiltersDropdown/FiltersDropdown.jsx";
 
+const pageSize = 3;
+
 export default function Nannies() {
   const { user, loading } = useAuthUser();
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -24,10 +26,12 @@ export default function Nannies() {
   const [filter, setFilter] = useState("A_TO_Z");
   const [nannies, setNannies] = useState([]);
   const [nanniesLoading, setNanniesLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(pageSize);
 
   useEffect(() => {
     const fetchNannies = async () => {
       setNanniesLoading(true);
+      setVisibleCount(pageSize);
 
       try {
         const nanniesRef = ref(db, "nannies");
@@ -99,6 +103,10 @@ export default function Nannies() {
     fetchNannies();
   }, [filter]);
 
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => Math.min(prev + pageSize, nannies.length));
+  };
+
   if (loading) return null;
 
   return (
@@ -112,20 +120,35 @@ export default function Nannies() {
           setIsRegisterOpen(true);
         }}
       />
+
       <section className={styles.nanniesPage}>
         <div className={styles.filtersRow}>
           <FiltersDropdown value={filter} onChange={setFilter} />
         </div>
+
         {nanniesLoading ? (
           <p>Loading nannies…</p>
         ) : (
-          <div className={styles.list}>
-            {nannies.map((nanny) => (
-              <NannyCard key={nanny.id} nanny={nanny} />
-            ))}
-          </div>
+          <>
+            <div className={styles.list}>
+              {nannies.slice(0, visibleCount).map((nanny) => (
+                <NannyCard key={nanny.id} nanny={nanny} />
+              ))}
+            </div>
+
+            {visibleCount < nannies.length && (
+              <button
+                type="button"
+                className={styles.loadMoreBtn}
+                onClick={handleLoadMore}
+              >
+                Load more
+              </button>
+            )}
+          </>
         )}
       </section>
+
       <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
 
       <RegistrationModal

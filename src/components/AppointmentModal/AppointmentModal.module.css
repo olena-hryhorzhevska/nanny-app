@@ -1,0 +1,198 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 16, 28, 0.55);
+  display: flex;
+  overflow-y: auto;
+  justify-content: center;
+  z-index: 9999;
+  align-items: flex-start;
+}
+
+.modal {
+  width: 100%;
+  max-width: 625px;
+  background: #fbfbfb;
+  border-radius: 28px;
+  padding: 64px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  cursor: pointer;
+  font-size: 35px;
+  font-weight: 300;
+  line-height: 1;
+  color: #11101c;
+}
+
+.closeBtn:hover {
+  background-color: #f03f3b;
+  color: #fbfbfb;
+  border-radius: 50%;
+}
+
+.title {
+  margin-bottom: 20px;
+  max-width: 520px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #11101c;
+}
+
+.subtitle {
+  margin: 0 0 40px;
+  max-width: 560px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: rgba(17, 16, 28, 0.5);
+}
+
+.nannyRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.nannyAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+  object-fit: cover;
+  display: block;
+}
+
+.nannyLabel {
+  margin: 0;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  color: #8a8a89;
+}
+
+.nannyName {
+  margin: 4px 0 0;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #11101c;
+}
+
+.grid {
+  display: flex;
+  gap: 16px 8px;
+  flex-wrap: wrap;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grid .field {
+  flex: 1 1 calc(50% - 4px);
+  min-width: 0;
+  height: 52px;
+}
+
+.input {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 16px;
+  color: #11101c;
+  outline: none;
+  background: transparent;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.input::placeholder {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #11101c;
+}
+
+.input:focus {
+  border-color: rgba(240, 63, 59, 0.45);
+  box-shadow: 0 0 0 4px rgba(240, 63, 59, 0.12);
+}
+
+.textarea {
+  min-height: 116px;
+  resize: none;
+  padding-top: 16px;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+  width: 100%;
+}
+
+.timeWrap {
+  position: relative;
+}
+
+.clockIcon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.error {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #f03f3b;
+}
+
+.sendBtn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 16px 18px;
+  border: 0;
+  border-radius: 30px;
+  background: #f03f3b;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+  cursor: pointer;
+}
+
+.sendBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.sendBtn:hover {
+  opacity: 0.94;
+}
