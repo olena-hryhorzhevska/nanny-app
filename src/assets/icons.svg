@@ -87,4 +87,16 @@
       </clipPath>
     </defs>
   </symbol>
+  <symbol
+  id="icon-close"
+  viewBox="0 0 32 32"
+>
+    <path
+    d="M24 8 8 24M8 8l16 16"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2.5"
+  />
+  </symbol>
 </svg>

@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./AppointmentModal.module.css";
+import toast from "react-hot-toast";
 
 const schema = yup.object({
   address: yup.string().required("Address is required"),
@@ -17,7 +18,7 @@ const schema = yup.object({
     .email("Enter a valid email")
     .required("Email is required"),
   parentName: yup.string().required("Name is required"),
-  comment: yup.string().required("Comment is required"),
+  comment: yup.string(),
 });
 
 export default function AppointmentModal({ isOpen, onClose, nanny }) {
@@ -25,6 +26,8 @@ export default function AppointmentModal({ isOpen, onClose, nanny }) {
     register,
     handleSubmit,
     reset,
+    watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(schema),
@@ -33,7 +36,7 @@ export default function AppointmentModal({ isOpen, onClose, nanny }) {
       address: "",
       phone: "+380",
       childAge: "",
-      time: "09:00",
+      time: "00:00",
       email: "",
       parentName: "",
       comment: "",
@@ -65,18 +68,12 @@ export default function AppointmentModal({ isOpen, onClose, nanny }) {
     reset();
   };
 
-  const onSubmit = async (values) => {
+  const onSubmit = async () => {
     try {
-      console.log("Appointment request:", {
-        nannyId: nanny?.id,
-        nannyName: nanny?.name,
-        ...values,
-      });
-
       handleClose();
-    } catch (e) {
-      console.log(e);
-      alert("Something went wrong. Try again.");
+      toast.success("Appointment successfully booked!");
+    } catch {
+      toast.error("Something went wrong. Try again.");
     }
   };
 
@@ -89,7 +86,9 @@ export default function AppointmentModal({ isOpen, onClose, nanny }) {
         aria-modal="true"
       >
         <button className={styles.closeBtn} onClick={handleClose} type="button">
-          ×
+          <svg className={styles.closeIcon}>
+            <use href="/src/assets/icons.svg#icon-close" />
+          </svg>
         </button>
 
         <h2 className={styles.title}>Make an appointment with a babysitter</h2>
@@ -148,22 +147,13 @@ export default function AppointmentModal({ isOpen, onClose, nanny }) {
             </div>
 
             <div className={styles.field}>
-              <div className={styles.timeWrap}>
-                <select className={styles.input} {...register("time")}>
-                  <option value="09:00">09 : 00</option>
-                  <option value="09:30">09 : 30</option>
-                  <option value="10:00">10 : 00</option>
-                  <option value="10:30">10 : 30</option>
-                </select>
-
-                <svg className={styles.clockIcon}>
-                  <use href="/src/assets/icons.svg#icon-clock" />
-                </svg>
-              </div>
-
-              {errors.time && (
-                <span className={styles.error}>{errors.time.message}</span>
-              )}
+              <MeetingTimeSelect
+                value={watch("time")}
+                onChange={(val) =>
+                  setValue("time", val, { shouldValidate: true })
+                }
+                error={errors.time?.message}
+              />
             </div>
           </div>
 
@@ -209,6 +199,95 @@ export default function AppointmentModal({ isOpen, onClose, nanny }) {
           </button>
         </form>
       </div>
+    </div>
+  );
+}
+
+function MeetingTimeSelect({ value, onChange, error }) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef(null);
+
+  const options = ["09:00", "09:30", "10:00", "10:30"];
+
+  function formatTimeParts(t) {
+    if (!t) return { hh: "00", mm: "00" };
+    const [hh = "00", mm = "00"] = t.split(":");
+    return { hh, mm };
+  }
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onDocClick = (e) => {
+      if (!rootRef.current) return;
+      if (!rootRef.current.contains(e.target)) setOpen(false);
+    };
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+
+    document.addEventListener("mousedown", onDocClick);
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", onDocClick);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
+  const label = value ? value.replace(":", " : ") : "00 : 00";
+
+  return (
+    <div className={styles.timeField} ref={rootRef}>
+      <button
+        type="button"
+        className={`${styles.input} ${styles.timeButton} ${
+          error ? styles.inputError : ""
+        }`}
+        onClick={() => setOpen((v) => !v)}
+      >
+        <span>{label}</span>
+
+        <svg className={styles.clockIcon} aria-hidden="true">
+          <use href="/src/assets/icons.svg#icon-clock" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className={styles.timeDropdown}>
+          <p className={styles.timeTitle}>Meeting time</p>
+
+          <ul className={styles.timeList}>
+            {options.map((opt) => {
+              const active = opt === value;
+              const { hh, mm } = formatTimeParts(opt);
+              return (
+                <li key={opt}>
+                  <button
+                    type="button"
+                    className={`${styles.timeOption} ${
+                      active ? styles.timeOptionActive : ""
+                    }`}
+                    onClick={() => {
+                      onChange(opt);
+                      setOpen(false);
+                    }}
+                  >
+                    <span className={styles.timeValue}>
+                      <span>{hh}</span>
+                      <span className={styles.timeColon}>:</span>
+                      <span>{mm}</span>
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+
+      {error && <span className={styles.error}>{error}</span>}
     </div>
   );
 }
