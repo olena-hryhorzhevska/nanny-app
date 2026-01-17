@@ -35,7 +35,7 @@ export default function AppHeader({ user, onOpenLogin, onOpenRegister }) {
                 <div className={styles.user}>
                   <div className={styles["white-square"]}>
                     <svg width="24" height="24">
-                      <use href="/src/assets/icons.svg#icon-user" />
+                      <use href="/icons.svg#icon-user" />
                     </svg>
                   </div>
                   <span className={styles.userName}>
