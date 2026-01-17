@@ -87,7 +87,7 @@ export default function AppointmentModal({ isOpen, onClose, nanny }) {
       >
         <button className={styles.closeBtn} onClick={handleClose} type="button">
           <svg className={styles.closeIcon}>
-            <use href="/src/assets/icons.svg#icon-close" />
+            <use href="/icons.svg#icon-close" />
           </svg>
         </button>
 
@@ -250,7 +250,7 @@ function MeetingTimeSelect({ value, onChange, error }) {
         <span>{label}</span>
 
         <svg className={styles.clockIcon} aria-hidden="true">
-          <use href="/src/assets/icons.svg#icon-clock" />
+          <use href="/icons.svg#icon-clock" />
         </svg>
       </button>
 

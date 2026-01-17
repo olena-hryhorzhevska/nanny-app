@@ -63,7 +63,7 @@ export default function NannyCard({ nanny }) {
                         <p className={styles.reviewerName}>{r.reviewer}</p>
                         <div className={styles.reviewRating}>
                           <svg className={styles.starIcon}>
-                            <use href="/src/assets/icons.svg#icon-rating-star" />
+                            <use href="/icons.svg#icon-rating-star" />
                           </svg>
                           <span>{r.rating}</span>
                         </div>
@@ -87,13 +87,13 @@ export default function NannyCard({ nanny }) {
           <ul className={styles.metaList}>
             <li className={styles.metaItem}>
               <svg className={styles.iconLocation}>
-                <use href="/src/assets/icons.svg#icon-location-pin" />
+                <use href="/icons.svg#icon-location-pin" />
               </svg>
               {nanny.location}
             </li>
             <li className={styles.metaItem}>
               <svg className={styles.iconStar}>
-                <use href="/src/assets/icons.svg#icon-rating-star" />
+                <use href="/icons.svg#icon-rating-star" />
               </svg>
               Rating: {nanny.rating}
             </li>
@@ -108,7 +108,7 @@ export default function NannyCard({ nanny }) {
             aria-label="Add to favorites"
           >
             <svg className={styles.heartIcon}>
-              <use href="/src/assets/icons.svg#icon-fav-star" />
+              <use href="/icons.svg#icon-fav-star" />
             </svg>
           </button>
         </div>
