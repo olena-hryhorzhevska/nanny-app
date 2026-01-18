@@ -53,13 +53,20 @@
       </clipPath>
     </defs>
   </symbol>
-  <symbol
-  id="icon-fav-star"
-  viewBox="0 0 26 26"
-  fill="none"
->
+  <symbol id="icon-fav-outline" viewBox="0 0 26 26">
     <path
+    fill="none"
     stroke="#11101c"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M22.577 4.994a5.96 5.96 0 0 0-8.429 0L13 6.143l-1.148-1.149a5.96 5.96 0 1 0-8.429 8.429l1.149 1.148L13 22.999l8.428-8.428 1.149-1.149a5.96 5.96 0 0 0 0-8.428"
+  />
+  </symbol>
+  <symbol id="icon-fav-filled" viewBox="0 0 26 26">
+    <path
+    fill="#f03f3b"
+    stroke="#f03f3b"
     stroke-linecap="round"
     stroke-linejoin="round"
     stroke-width="2"
@@ -97,6 +104,18 @@
     stroke-linecap="round"
     stroke-linejoin="round"
     stroke-width="2.5"
+  />
+  </symbol>
+  <symbol id="icon-arrow-up" viewBox="0 0 14 16">
+    <path
+    fill="currentColor"
+    d="M12.622.861a1 1 0 0 0-1.13-.851L2.58 1.262a1 1 0 1 0 .278 1.981L10.78 2.13l1.114 7.922a1 1 0 0 0 1.98-.279zM1.597 15.977 12.43 1.602 10.833.398 0 14.774z"
+  />
+  </symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 20 15">
+    <path
+    fill="currentColor"
+    d="M18.734 7.947a1 1 0 0 0-.025-1.414L12.235.28a1 1 0 1 0-1.389 1.438l5.755 5.558-5.558 5.754a1 1 0 0 0 1.44 1.39zm-18.7.619 17.998-.314-.035-2L0 6.566z"
   />
   </symbol>
 </svg>

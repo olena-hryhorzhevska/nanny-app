@@ -1,10 +1,13 @@
 import styles from "./NannyCard.module.css";
 import { useState } from "react";
 import AppointmentModal from "../AppointmentModal/AppointmentModal.jsx";
+import { useFavoritesStore } from "../../store/favoritesStore.js";
 
-export default function NannyCard({ nanny }) {
+export default function NannyCard({ nanny, requireAuth }) {
   const [isReadMore, setIsReadMore] = useState(false);
   const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
+  const isFav = useFavoritesStore((s) => s.isFavorite(nanny.id));
+  const toggleFavorite = useFavoritesStore((s) => s.toggleFavorite);
 
   return (
     <>
@@ -105,10 +108,18 @@ export default function NannyCard({ nanny }) {
           <button
             type="button"
             className={styles.favoriteBtn}
-            aria-label="Add to favorites"
+            onClick={() => {
+              const ok = requireAuth?.();
+              if (!ok) return;
+              toggleFavorite(nanny);
+            }}
           >
             <svg className={styles.heartIcon}>
-              <use href="/icons.svg#icon-fav-star" />
+              <use
+                href={`/icons.svg#${
+                  isFav ? "icon-fav-filled" : "icon-fav-outline"
+                }`}
+              />
             </svg>
           </button>
         </div>

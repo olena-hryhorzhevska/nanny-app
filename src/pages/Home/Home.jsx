@@ -26,7 +26,18 @@ export default function Home() {
           <div className={styles["hero-left-body"]}>
             <h1>Make Life Easier for the Family:</h1>
             <p>Find Babysitters Online for All Occasions</p>
-            <Link to="/nannies" className={styles["hero-btn"]}>Get started →</Link>
+            <Link to="/nannies" className={styles["hero-btn"]}>
+              <span>Get started</span>
+              <span className={styles.iconWrap}>
+                <svg className={`${styles.icon} ${styles.iconUp}`}>
+                  <use href="/icons.svg#icon-arrow-up" />
+                </svg>
+
+                <svg className={`${styles.icon} ${styles.iconRight}`}>
+                  <use href="/icons.svg#icon-arrow-right" />
+                </svg>
+              </span>
+            </Link>
           </div>
         </div>
 
@@ -57,7 +68,7 @@ export default function Home() {
             <div className={styles["stats-card"]}>
               <div className={styles["red-square"]}>
                 <svg width="30" height="30">
-                  <use href="/src/assets/icons.svg#icon-check" />
+                  <use href="/icons.svg#icon-check" />
                 </svg>
               </div>
 

@@ -16,6 +16,7 @@ import { db } from "../../firebase/firebase";
 import NannyCard from "../../components/NannyCard/NannyCard.jsx";
 import styles from "./Nannies.module.css";
 import FiltersDropdown from "../../components/FiltersDropdown/FiltersDropdown.jsx";
+import { useLocation } from "react-router-dom";
 
 const pageSize = 3;
 
@@ -27,6 +28,21 @@ export default function Nannies() {
   const [nannies, setNannies] = useState([]);
   const [nanniesLoading, setNanniesLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(pageSize);
+
+  const requireAuth = () => {
+    if (user) return true;
+    setIsLoginOpen(true);
+    return false;
+  };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.openLogin) {
+      setIsLoginOpen(true);
+      window.history.replaceState({}, document.title); // чтобы не повторялось
+    }
+  }, [location.state]);
 
   useEffect(() => {
     const fetchNannies = async () => {
@@ -128,11 +144,20 @@ export default function Nannies() {
 
         {nanniesLoading ? (
           <p>Loading nannies…</p>
+        ) : nannies.length === 0 ? (
+          <div className={styles.emptyState}>
+            <h2 className={styles.emptyTitle}>No results</h2>
+            <p className={styles.emptyText}>Try changing the filter options.</p>
+          </div>
         ) : (
           <>
             <div className={styles.list}>
               {nannies.slice(0, visibleCount).map((nanny) => (
-                <NannyCard key={nanny.id} nanny={nanny} />
+                <NannyCard
+                  key={nanny.id}
+                  nanny={nanny}
+                  requireAuth={requireAuth}
+                />
               ))}
             </div>
 

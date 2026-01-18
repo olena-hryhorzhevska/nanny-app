@@ -191,21 +191,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #11101c;
   margin-left: 34px;
 }
 
-.favoriteBtn .icon {
-  width: 22px;
-  height: 22px;
-}
-
-.favoriteBtn:hover {
-  opacity: 0.85;
-}
-
-.favoriteBtn:active {
-  transform: scale(0.98);
+.heartIcon {
+  width: 26px;
+  height: 26px;
 }
 
 .readMoreBtn {
@@ -290,11 +281,6 @@
   width: 16px;
   height: 16px;
   flex: 0 0 16px;
-}
-
-.heartIcon {
-  width: 26px;
-  height: 26px;
 }
 
 .reviewText {
