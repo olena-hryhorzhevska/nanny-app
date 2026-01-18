@@ -385,27 +385,9 @@
   }
 }
 
-
 @media (max-width: 768px) {
-  .badge {
-    font-size: 13px; 
-    padding: 6px 12px;
-    line-height: 140%;
-  }
-  .badge strong {
-    font-weight: 600; 
-  }
-
-  .about {
-    font-size: 14px; 
-    line-height: 140%;
-  }
-  .badges + .badge,
-  .badge:last-child {
-    font-size: 13px;
-  }
-
   .card {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-areas:
@@ -416,9 +398,14 @@
     padding: 18px;
   }
 
+  .content {
+    min-width: 0;
+  }
+
   .avatarWrapper {
+    grid-area: avatar;
     width: 100%;
-    max-width: 220px; 
+    max-width: 220px;
     height: auto;
     padding: 14px;
     border-radius: 20px;
@@ -430,17 +417,43 @@
   }
 
   .meta {
+    grid-area: meta;
+    position: static;
+    display: flex;
+    flex-direction: column;
     align-items: flex-end;
     gap: 10px;
+    min-width: 0;
+    max-width: 46vw; 
   }
 
   .metaList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     gap: 8px;
+    white-space: normal;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .metaItem {
     font-size: 14px;
     line-height: 140%;
+    text-align: right;
+    justify-content: flex-end;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
+  }
+
+  .metaItem:not(:last-child)::after {
+    content: none;
+  }
+
+  .favoriteBtn {
+    margin-left: 0;
   }
 
   .heartIcon {
@@ -451,6 +464,23 @@
   .name {
     font-size: 20px;
     margin-bottom: 16px;
+  }
+
+  .badge {
+    font-size: 13px;
+    padding: 6px 12px;
+    line-height: 140%;
+    white-space: normal;
+  }
+
+  .badge strong {
+    font-weight: 600;
+  }
+
+  .about {
+    font-size: 14px;
+    line-height: 140%;
+    max-width: 100%;
   }
 
   .badges {
