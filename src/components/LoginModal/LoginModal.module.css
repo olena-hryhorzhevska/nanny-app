@@ -117,3 +117,92 @@
   cursor: pointer;
   margin-top: 40px;
 }
+
+
+@media (max-width: 1024px) {
+  .modal {
+    width: min(565px, calc(100vw - 48px));
+    height: auto;      
+    padding: 48px;
+  }
+
+  .modalTitle {
+    font-size: 34px;
+  }
+
+  .modalInfo {
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  .modalInput,
+  .modalSubmit {
+    width: 100%; 
+  }
+
+  .modalSubmit {
+    margin-top: 28px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .backdrop {
+    align-items: center; 
+    padding: 16px;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 24px;
+    padding: 24px;
+    transform-origin: bottom center;
+    animation: modal-in-mobile 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  @keyframes modal-in-mobile {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .modalClose {
+    top: 14px;
+    right: 14px;
+    font-size: 28px;
+  }
+
+  .modalTitle {
+    font-size: 28px;
+    line-height: 115%;
+  }
+
+  .modalParagraph {
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  .modalInfo {
+    margin-bottom: 20px;
+  }
+
+  .fields > *:not(:last-child) {
+    margin-bottom: 14px;
+  }
+
+  .modalInput {
+    height: 48px;
+    font-size: 15px;
+  }
+
+  .modalSubmit {
+    height: 48px;
+    margin-top: 20px;
+  }
+}

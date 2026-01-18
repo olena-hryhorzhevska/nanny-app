@@ -62,3 +62,70 @@
   font-size: 16px;
   color: rgba(17, 16, 28, 0.5);
 }
+
+@media (max-width: 1024px) {
+  .nanniesPage {
+    padding: 0 40px;
+    gap: 24px;
+  }
+
+  .filtersRow {
+    margin-bottom: 24px;
+  }
+
+  .list {
+    gap: 20px;
+  }
+
+  .loadMoreBtn {
+    margin-bottom: 72px;
+  }
+
+  .emptyState {
+    padding: 40px 28px;
+  }
+
+  .emptyTitle {
+    font-size: 22px;
+  }
+
+  .emptyText {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nanniesPage {
+    padding: 0 16px;
+    gap: 18px;
+  }
+
+  .filtersRow {
+    margin-bottom: 12px;
+  }
+
+  .list {
+    gap: 16px;
+  }
+
+  .loadMoreBtn {
+    width: 100%;
+    max-width: 320px;
+    height: 48px;
+    margin-bottom: 48px;
+  }
+
+  .emptyState {
+    padding: 28px 16px;
+    border-radius: 20px;
+  }
+
+  .emptyTitle {
+    font-size: 20px;
+  }
+
+  .emptyText {
+    font-size: 14px;
+    line-height: 140%;
+  }
+}

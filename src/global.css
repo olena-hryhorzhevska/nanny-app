@@ -4,6 +4,12 @@
   --color-primary-soft: rgba(240, 63, 59, 0.2);
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 *,
 *::before,
 *::after {
@@ -45,4 +51,32 @@ body {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 128px;
+}
+
+@media (max-width: 1000px) {
+  .page {
+    padding: 24px;
+  }
+
+  .container {
+    padding: 0 40px;
+  }
+
+  .section-inner {
+    padding: 28px 40px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 16px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .section-inner {
+    padding: 24px 16px;
+  }
 }

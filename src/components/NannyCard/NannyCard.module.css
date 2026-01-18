@@ -320,3 +320,145 @@
 .appointmentBtn:active {
   transform: scale(0.99);
 }
+
+
+@media (max-width: 1024px) {
+  .card {
+    position: relative; 
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-template-areas:
+      "avatar meta"
+      "content content";
+    column-gap: 18px;
+    row-gap: 16px;
+    padding: 20px;
+  }
+
+  .avatarWrapper {
+    grid-area: avatar;
+    align-self: start;
+  }
+
+  .content {
+    grid-area: content;
+    min-width: 0;
+  }
+
+  .meta {
+    grid-area: meta;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .metaList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    white-space: normal;
+  }
+
+  .metaItem {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .metaItem:not(:last-child)::after {
+    content: none;
+  }
+
+  .favoriteBtn {
+    margin-left: 0;
+  }
+
+  .badge {
+    white-space: normal;
+  }
+
+  .about {
+    max-width: 100%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .badge {
+    font-size: 13px; 
+    padding: 6px 12px;
+    line-height: 140%;
+  }
+  .badge strong {
+    font-weight: 600; 
+  }
+
+  .about {
+    font-size: 14px; 
+    line-height: 140%;
+  }
+  .badges + .badge,
+  .badge:last-child {
+    font-size: 13px;
+  }
+
+  .card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "avatar meta"
+      "content content";
+    column-gap: 14px;
+    row-gap: 14px;
+    padding: 18px;
+  }
+
+  .avatarWrapper {
+    width: 100%;
+    max-width: 220px; 
+    height: auto;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .avatarInner {
+    width: 88px;
+    height: 88px;
+  }
+
+  .meta {
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .metaList {
+    gap: 8px;
+  }
+
+  .metaItem {
+    font-size: 14px;
+    line-height: 140%;
+  }
+
+  .heartIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .name {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .badges {
+    margin-bottom: 16px;
+  }
+
+  .appointmentBtn {
+    width: 100%;
+    margin-top: 24px;
+  }
+}
