@@ -4,6 +4,9 @@ import PageLayout from "../../components/PageLayout.jsx";
 import LoginModal from "../../components/LoginModal/LoginModal.jsx";
 import { useState } from "react";
 import RegistrationModal from "../../components/RegistrationModal/RegistrationModal.jsx";
+import { useAuthUser } from "../../hooks/useAuthUser.js";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
 
 export default function Home() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -14,6 +17,11 @@ export default function Home() {
 
   const openRegister = () => setIsRegisterOpen(true);
   const closeRegister = () => setIsRegisterOpen(false);
+  const { user, loading } = useAuthUser();
+
+  const handleLogout = async () => {
+    await signOut(auth);
+  };
 
   return (
     <PageLayout>
@@ -50,16 +58,38 @@ export default function Home() {
               </div>
 
               <div className={styles["auth-buttons"]}>
-                <button className={styles["nav-btn"]} onClick={openLogin}>
-                  Log in
-                </button>
+                {loading ? null : user ? (
+                  <>
+                    <div className={styles.user}>
+                      <div className={styles["white-square"]}>
+                        <svg width="24" height="24">
+                          <use href="/icons.svg#icon-user" />
+                        </svg>
+                      </div>
 
-                <button
-                  className={`${styles["nav-btn"]} ${styles["nav-btn-primary"]}`}
-                  onClick={openRegister}
-                >
-                  Registration
-                </button>
+                      <span className={styles.userName}>
+                        {user.displayName || user.email}
+                      </span>
+                    </div>
+
+                    <button className={styles.logoutBtn} onClick={handleLogout}>
+                      Log out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button className={styles["nav-btn"]} onClick={openLogin}>
+                      Log in
+                    </button>
+
+                    <button
+                      className={`${styles["nav-btn"]} ${styles["nav-btn-primary"]}`}
+                      onClick={openRegister}
+                    >
+                      Registration
+                    </button>
+                  </>
+                )}
               </div>
             </nav>
           </header>
