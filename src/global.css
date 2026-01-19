@@ -41,6 +41,7 @@ body {
 .page-inner {
   width: 100%;
   max-width: 1440px;
+  margin: 0 auto;
 }
 
 .section-inner {

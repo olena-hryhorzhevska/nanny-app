@@ -3,8 +3,14 @@ import Home from "./pages/Home/Home.jsx";
 import Nannies from "./pages/Nannies/Nannies.jsx";
 import Favorites from "./pages/Favorites/Favorites.jsx";
 import { Toaster } from "react-hot-toast";
+import { useAuthUser } from "./hooks/useAuthUser.js";
+import { useFavoritesSync } from "./hooks/useFavoritesSync.js";
 
 function App() {
+  const { user, loading } = useAuthUser();
+  useFavoritesSync(user);
+  if (loading) return null;
+
   return (
     <>
       <Toaster

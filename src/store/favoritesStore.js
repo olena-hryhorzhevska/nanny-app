@@ -1,30 +1,23 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
 
-export const useFavoritesStore = create(
-  persist(
-    (set, get) => ({
-      favorites: [],
+export const useFavoritesStore = create((set, get) => ({
+  favoriteIds: [],
 
-      isFavorite: (id) => get().favorites.some((n) => n.id === id),
+  setFavorites: (ids) => set({ favoriteIds: ids }),
 
-      toggleFavorite: (nanny) =>
-        set((state) => {
-          const exists = state.favorites.some((n) => n.id === nanny.id);
-          return {
-            favorites: exists
-              ? state.favorites.filter((n) => n.id !== nanny.id)
-              : [...state.favorites, nanny],
-          };
-        }),
+  clearFavorites: () => set({ favoriteIds: [] }),
 
-      removeFavorite: (id) =>
-        set((state) => ({
-          favorites: state.favorites.filter((n) => n.id !== id),
-        })),
+  isFavorite: (id) => get().favoriteIds.includes(id),
 
-      clearFavorites: () => set({ favorites: [] }),
-    }),
-    { name: "favorites-store" }
-  )
-);
+  addLocal: (id) =>
+    set((state) =>
+      state.favoriteIds.includes(id)
+        ? state
+        : { favoriteIds: [...state.favoriteIds, id] }
+    ),
+
+  removeLocal: (id) =>
+    set((state) => ({
+      favoriteIds: state.favoriteIds.filter((x) => x !== id),
+    })),
+}));

@@ -1,14 +1,14 @@
 .nanniesPage {
   background: #f3f3f3;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  padding: 0 clamp(16px, 4vw, 128px);
   min-height: 100vh;
 }
 
-.filtersRow {
-  margin-bottom: 32px;
+.inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .list {
@@ -48,6 +48,7 @@
   border-radius: 24px;
   padding: 48px 32px;
   text-align: center;
+  margin-top: 30px;
 }
 
 .emptyTitle {
@@ -64,13 +65,10 @@
 }
 
 @media (max-width: 1024px) {
-  .nanniesPage {
+
+  .inner {
     padding: 0 40px;
     gap: 24px;
-  }
-
-  .filtersRow {
-    margin-bottom: 24px;
   }
 
   .list {
@@ -95,13 +93,10 @@
 }
 
 @media (max-width: 768px) {
-  .nanniesPage {
+
+  .inner {
     padding: 0 16px;
     gap: 18px;
-  }
-
-  .filtersRow {
-    margin-bottom: 12px;
   }
 
   .list {

@@ -12,9 +12,9 @@ export default function AppHeader({ user, onOpenLogin, onOpenRegister }) {
     `${styles.link} ${isActive ? styles.active : ""}`;
 
   return (
-    <div className={`${styles.container} container`}>
+    <div className={`${styles.container}`}>
       <header className={styles.header}>
-        <div className={styles.inner}>
+        <div className={`${styles.inner} container`}>
           <Link to="/" className={styles.logo}>
             Nanny.Services
           </Link>

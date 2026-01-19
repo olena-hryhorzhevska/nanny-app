@@ -12,7 +12,7 @@ The platform provides a clean, intuitive, and responsive experience for browsing
 ## 🖼 Screenshots
 
 ### Home page
-![Home page](./screenshots/home.png)
+![Home page](./screenshots/home.png)3
 
 ### Nannies page
 ![Nannies page](./screenshots/nannies.png)

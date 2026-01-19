@@ -40,7 +40,7 @@ export default function Nannies() {
   useEffect(() => {
     if (location.state?.openLogin) {
       setIsLoginOpen(true);
-      window.history.replaceState({}, document.title); // чтобы не повторялось
+      window.history.replaceState({}, document.title);
     }
   }, [location.state]);
 
@@ -138,40 +138,45 @@ export default function Nannies() {
       />
 
       <section className={styles.nanniesPage}>
-        <div className={styles.filtersRow}>
-          <FiltersDropdown value={filter} onChange={setFilter} />
-        </div>
-
-        {nanniesLoading ? (
-          <p>Loading nannies…</p>
-        ) : nannies.length === 0 ? (
-          <div className={styles.emptyState}>
-            <h2 className={styles.emptyTitle}>No results</h2>
-            <p className={styles.emptyText}>Try changing the filter options.</p>
+        <div className={`${styles.inner} container`}>
+          <div className={styles.filtersRow}>
+            <FiltersDropdown value={filter} onChange={setFilter} />
           </div>
-        ) : (
-          <>
-            <div className={styles.list}>
-              {nannies.slice(0, visibleCount).map((nanny) => (
-                <NannyCard
-                  key={nanny.id}
-                  nanny={nanny}
-                  requireAuth={requireAuth}
-                />
-              ))}
-            </div>
 
-            {visibleCount < nannies.length && (
-              <button
-                type="button"
-                className={styles.loadMoreBtn}
-                onClick={handleLoadMore}
-              >
-                Load more
-              </button>
-            )}
-          </>
-        )}
+          {nanniesLoading ? (
+            <p>Loading nannies…</p>
+          ) : nannies.length === 0 ? (
+            <div className={styles.emptyState}>
+              <h2 className={styles.emptyTitle}>No results</h2>
+              <p className={styles.emptyText}>
+                Try changing the filter options.
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className={styles.list}>
+                {nannies.slice(0, visibleCount).map((nanny) => (
+                  <NannyCard
+                    key={nanny.id}
+                    nanny={nanny}
+                    requireAuth={requireAuth}
+                    user={user}
+                  />
+                ))}
+              </div>
+
+              {visibleCount < nannies.length && (
+                <button
+                  type="button"
+                  className={styles.loadMoreBtn}
+                  onClick={handleLoadMore}
+                >
+                  Load more
+                </button>
+              )}
+            </>
+          )}
+        </div>
       </section>
 
       <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />

@@ -4,6 +4,13 @@
   border-radius: 30px;
   overflow: hidden;
   min-height: calc(100vh - 64px);
+  max-width: 3000px;
+  margin: 0 auto;
+}
+
+:global(.page-inner) {
+  max-width: none;
+  width: 100%;
 }
 
 .hero-left {

@@ -2,12 +2,34 @@ import styles from "./NannyCard.module.css";
 import { useState } from "react";
 import AppointmentModal from "../AppointmentModal/AppointmentModal.jsx";
 import { useFavoritesStore } from "../../store/favoritesStore.js";
+import { addFavorite, removeFavorite } from "../../firebase/favoritesApi.js";
 
-export default function NannyCard({ nanny, requireAuth }) {
+export default function NannyCard({ nanny, requireAuth, user }) {
   const [isReadMore, setIsReadMore] = useState(false);
   const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
+
   const isFav = useFavoritesStore((s) => s.isFavorite(nanny.id));
-  const toggleFavorite = useFavoritesStore((s) => s.toggleFavorite);
+  const addLocal = useFavoritesStore((s) => s.addLocal);
+  const removeLocal = useFavoritesStore((s) => s.removeLocal);
+
+  const onToggleFavorite = async () => {
+    const ok = requireAuth?.();
+    if (!ok) return;
+
+    if (!user) return;
+
+    try {
+      if (isFav) {
+        removeLocal(nanny.id);
+        await removeFavorite(user.uid, nanny.id);
+      } else {
+        addLocal(nanny.id);
+        await addFavorite(user.uid, nanny.id);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -108,11 +130,7 @@ export default function NannyCard({ nanny, requireAuth }) {
           <button
             type="button"
             className={styles.favoriteBtn}
-            onClick={() => {
-              const ok = requireAuth?.();
-              if (!ok) return;
-              toggleFavorite(nanny);
-            }}
+            onClick={onToggleFavorite}
           >
             <svg className={styles.heartIcon}>
               <use
